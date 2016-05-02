@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Title
+      </th>
+      <th>
+        Author
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in list track by $index">
+      <td ng-bind="item.id"></td>
+      <td ng-bind="item.title"></td>
+      <td ng-bind="item.author"></td>
+    </tr>
+    <tr>
+      <td><button type="button" ng-click="addItem()">Add</button></td>
+      <td><input type="text" ng-model="newItem.title"></td>
+      <td><input type="text" ng-model="newItem.author"></td>
+    </tr>
+  </tbody>
+</table>

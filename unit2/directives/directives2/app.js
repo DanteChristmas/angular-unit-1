@@ -40,7 +40,7 @@ angular.module('myapp', [])
 .directive('looseCouple', ['$log', function ($log) {
   return {
     scope: {
-      list: '='
+      list: '@'
     },
     templateUrl: 'partials/loose-couple.html'
   }
