@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="angular-events">
+  <head>
+    <style>
+      .item-block {
+        min-height: 50px;
+        min-width: 50px;
+        background-color: red;
+        margin: 10px;
+      }
+
+      .ng-enter {
+        transition:10.4s ease all;
+        opacity:0;
+        transform:translateX(-100%);
+      }
+
+      .ng-enter.ng-enter-active {
+        opacity:1;
+        transform:translateX(10%);
+      }
+
+      .ng-leave {
+        transition:0.4s ease all;
+        opacity:1;
+        transform:translateX(0);
+      }
+
+      .ng-leave.ng-leave-active {
+        opacity:0;
+        transform:translateX(-100%);
+      }
+
+      .ng-hide-remove {
+        transition: 0.4s ease all;
+        opacity: 0;
+        transform:translateY(-100%);
+      }
+      .ng-hide-remove-active {
+        opacity: 1;
+        transform:translateY(0);
+      }
+      .ng-hide-add {
+        transition: 0.4s ease all;
+        opacity: 1;
+        transform:translateY(0);
+      }
+      .ng-hide-add-active {
+        opacity: 0;
+        transform:translateY(-100%);
+      }
+
+      .ng-enter-stagger, .ng-leave-stagger {
+        transition-delay: 0.2s;
+        transition-duration:0;
+      }
+    </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+    <script type="text/javascript">
+      var app = angular.module('angular-events', ['ngAnimate'])
+      .controller('mainCtrl', function ($scope, $log, $timeout) {
+        $scope.isShowing = true;
+        // $scope.items = [];
+        $timeout(function() {
+          $scope.items = [1,2,3,4,5,6];
+        },400);
+        $scope.toggleFade = function () {
+          $scope.isShowing = !$scope.isShowing;
+        };
+        $scope.addRow = function () {
+          $scope.items.push("new item");
+        };
+        $scope.removeRow = function () {
+          $scope.items.pop();
+        };
+      });
+    </script>
+  </head>
+  <body ng-app="angular-events" ng-cloak>
+    <div class="container" ng-controller="mainCtrl">
+      <h1 ng-show="isShowing">
+        I have fancy fade animations and stuff
+      </h1>
+      <button type="button" class="btn btn-default" ng-click="toggleFade()">
+        fancy fade animation
+      </button>
+      <ul>
+        <li ng-repeat="item in items" class="item-block" ng-bind="item"></li>
+      </ul>
+      <div>
+        <button ng-click="addRow()" type="button">
+          add item
+        </button>
+        <button ng-click="removeRow()" type="button">
+          remove row
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

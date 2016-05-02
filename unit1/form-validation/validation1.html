@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="angular-validation">
+  <head>
+    <style>
+      div {
+        margin: 10px;
+      }
+      .the-form.ng-invalid{
+        border: 1px solid red;
+      }
+      .the-form.ng-valid {
+        border: 1px solid green;
+      }
+      .the-form.ng-pristine{
+        border: 1px solid yellow;
+      }
+      .ac .ng-invalid {
+        border: 1px solid red;
+      }
+      .ac .ng-valid {
+        border: 1px solid green;
+      }
+
+      .valid input {
+        border: 1px solid green;
+      }
+      .invalid input {
+        border: 1px solid red;
+      }
+    </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script type="text/javascript">
+      var app = angular.module('angular-validation', []);
+      app.controller('mainCtrl', function ($scope, $log) {
+        $scope.vm = {};
+
+        $scope.submitForm = function (i) {
+          $log.info(i);
+        };
+      });
+    </script>
+  </head>
+  <body ng-controller="mainCtrl" ng-cloak>
+    <form class="the-form" ng-submit="submitForm($index)"  name="myform">
+      <div class="ac">
+        <label for="email">Email: </label>
+        <input type="email" name="email" ng-model="vm.email" required>
+        <p ng-bind="myform.$error | json">
+          email is required
+        </p>
+        <p ng-show="myform.email.$error.email">
+          invalid email
+        </p>
+      </div>
+      <div ng-class="{: myform.zip.$valid,invalid: myform.zip.$invalid}">
+        <label for="zip">Zipcode: </label>
+        <input ng-model="vm.zipcode" type="text" name="zip" maxlength=5 minlength=5 pattern="/^\d+$/">
+        <p ng-show="myform.zip.$error.maxlength || myform.zip.$error.minlength">
+          zip code must be 5 digits
+        </p>
+        <p ng-show="myform.zip.$error.pattern">
+          invalid character in zip
+        </p>
+      </div>
+    </form>
+
+    <div class="form-info">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Form Component
+            </th>
+            <th>
+              $pristine
+            </th>
+            <th>
+              $dirty
+            </th>
+            <th>
+              $touched
+            </th>
+            <th>
+              $valid
+            </th>
+            <th>
+              $invalid
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              myform
+            </td>
+            <td ng-bind="myform.$pristine"></td>
+            <td ng-bind="myform.$dirty"></td>
+            <td ng-bind="myform.$touched"></td>
+            <td ng-bind="myform.$valid"></td>
+            <td ng-bind="myform.$invalid"></td>
+          </tr>
+          <tr>
+            <td>
+              myform.email
+            </td>
+            <td ng-bind="myform.email.$pristine"></td>
+            <td ng-bind="myform.email.$dirty"></td>
+            <td ng-bind="myform.email.$touched"></td>
+            <td ng-bind="myform.email.$valid"></td>
+            <td ng-bind="myform.email.$invalid"></td>
+          </tr>
+          <tr>
+            <td>
+              myform.zip
+            </td>
+            <td ng-bind="myform.zip.$pristine"></td>
+            <td ng-bind="myform.zip.$dirty"></td>
+            <td ng-bind="myform.zip.$touched"></td>
+            <td ng-bind="myform.zip.$valid"></td>
+            <td ng-bind="myform.zip.$invalid"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

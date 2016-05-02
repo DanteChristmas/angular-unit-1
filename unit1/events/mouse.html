@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="angular-events">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script type="text/javascript">
+      var app = angular.module('angular-events', []);
+      app.controller('mainCtrl', function ($scope, $log) {
+        $scope.enterLeave = "Mouse over the columns";
+        $scope.setEnter = function (e, col) {
+          $log.info(e);
+          $scope.enterLeave = "Entered " + col;
+        };
+        $scope.setLeave = function (col) {
+          $scope.enterLeave = "Left " + col;
+        }
+      });
+    </script>
+  </head>
+  <body ng-app="angular-events" ng-cloak>
+    <div class="container" ng-controller="mainCtrl">
+      <div class="row">
+        <h3 ng-bind="enterLeave"></h3>
+      </div>
+      <div class="row" >
+        <div ng-mouseenter="setEnter($event, 'Col 1')" ng-mouseleave="setLeave('Col 1')" class="col-xs-4 bg-success">
+          Col 1
+        </div>
+        <div ng-mouseenter="setEnter('Col 2')" ng-mouseleave="setLeave('Col 2')" class="col-xs-4 bg-info">
+          Col 2
+        </div>
+        <div ng-mouseenter="setEnter('Col 3')"  ng-mouseleave="setLeave('Col 3')" class="col-xs-4 bg-warning">
+          Col 3
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
