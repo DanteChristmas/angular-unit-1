@@ -1,0 +1,29 @@
+<div class="media well">
+  <div class="media-left">
+    <img class="media-object posts-image" src="" ng-src="{{post.image}}">
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading posts-heading" ng-bind="post.title"></h4>
+    <p ng-bind="post.author"></p>
+    <span>
+      <i ng-click="upvote()"
+         class="fa fa-arrow-up post-vote"
+         aria-hidden="true"></i>
+
+      <i ng-click="downvote()"
+         class="fa fa-arrow-down post-vote"
+         aria-hidden="true"></i>
+
+      <span ng-bind="post.votes"
+            ng-class="{ 'post-positive': post.votes > 0,
+                     'post-negative': post.votes < 0 }">
+      </span>
+    </span>
+    <i aria-hidden="true"
+       ng-class="{ 'fa fa-heart-o': !post.favorite,
+                   'fa fa-heart posts-favorite': post.favorite}"></i>
+    <p ng-bind="post.description"></p>
+    <i class="fa fa-clock-o" aria-hidden="true"></i>{{displayDate()}}
+    <comments post-comments="post.comments"></comments>
+  </div>
+</div>

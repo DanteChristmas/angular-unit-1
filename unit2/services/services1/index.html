@@ -6,20 +6,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
     <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="./basicFactory.js"></script>
+    <script type="text/javascript" src="./basicService.js"></script>
   </head>
   <body ng-app="myapp" ng-cloak>
     <div class="container" ng-controller="MainCtrl">
-      <!-- <h1>tight coupling</h1>
-      <tight-couple></tight-couple>
-      <hr>
-      <h1>loose coupling</h1>
-      <loose-couple list="vm.myList"></loose-couple> -->
+      <div class="factory">
+        <h3 ng-bind="vm.factoryGreeting"></h3>
+        <form name="factoryForm" ng-submit="setFactoryGreeting()">
+          <input type="text" name="fact" ng-model="vm.factoryInput">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
 
-      <h3 ng-bind="vm.otherText"></h3>
-      <h5>tight coupling</h5>
-      <input-test></input-test>
-      <h5>loose coupling</h5>
-      <isolated-input some-text="{{vm.otherText}}"></isolated-input>
+      <div class="service">
+        <h3 ng-bind="vm.serviceGreeting"></h3>
+        <form name="serviceForm" ng-submit="setServiceGreeting()">
+          <input type="text" name="serv" ng-model="vm.serviceInput">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

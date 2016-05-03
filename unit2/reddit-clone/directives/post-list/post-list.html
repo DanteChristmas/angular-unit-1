@@ -1,0 +1,6 @@
+<article ng-repeat="post in filteredPosts = ( posts |
+                                              filter:filter.query |
+                                              filter:filter.filterFavs |
+                                              orderBy:(sort.prop || 'votes'):sort.direction )">
+  <post-display post="post"></post-display>
+</article>

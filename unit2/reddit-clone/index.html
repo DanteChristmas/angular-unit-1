@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="reddit-clone">
+  <head>
+    <title>RedditClone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+
+    <!-- Module  -->
+    <script src="app.js"></script>
+
+    <!-- Controllers -->
+    <script src="controllers/PostsCtrl.js"></script>
+
+    <!-- Directives -->
+    <script src="directives/posts-header/postsHeader.js"></script>
+    <script src="directives/post-list/postList.js"></script>
+    <script src="directives/post-display/postDisplay.js"></script>
+    <script src="directives/new-post-modal/newPostModal.js"></script>
+    <script src="directives/comments/comments.js"></script>
+
+    <!-- Services -->
+    <script src="services/PostService.js"></script>
+    <script src="services/LocalStoreService.js"></script>
+    <script src="services/ValidateUtilService.js"></script>
+
+    <div ng-controller="PostsCtrl">
+      <div class="container">
+        <div class="row">
+          <posts-header filter="vm.filter" sort="vm.sort" ></posts-header>
+          <post-list posts="vm.posts" filter="vm.filter" sort="vm.sort"></post-list>
+          <p ng-hide="vm.posts.length > 0">No Posts Added Yet</p>
+        </div>
+      </div>
+      <new-post-modal submit-handler="addPost"></new-post-modal>
+    </div>
+  </body>
+</html>

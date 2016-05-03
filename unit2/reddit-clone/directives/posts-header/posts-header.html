@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">RedditClone</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#" data-toggle="modal" data-target="#newPostModal"><i class="fa fa-plus"></i> New Post </a>
+        </li>
+        <li>
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" ng-model="query" class="form-control" placeholder="Search">
+            </div>
+          </form>
+        </li>
+        <li>
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <label for="sortSelect">Sort by:</label>
+              <select id="sortSelect" ng-model="sort.prop"
+                                      ng-options="x for x in ['votes', 'date', 'title', 'favorite']">
+                <!-- <option value="votes" selected>votes</option>
+                <option value="date">date</option>
+                <option value="title">title</option>
+                <option value="favorite">favorite</option> -->
+              </select>
+            </div>
+          </form>
+        </li>
+        <li>
+          <a href="#" ng-click="sortDesc()">
+            <i class="fa fa-lg fa-chevron-down header-active"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" ng-click="sortAsc()">
+            <i class="fa fa-lg fa-chevron-up"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" ng-click="toggleFavs()">
+            <i class="fa fa-lg fa-heart header-favorite" ng-show="filter.showFavs"></i>
+            <i class="fa fa-lg fa-heart-o" ng-hide="filter.showFavs"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

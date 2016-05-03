@@ -40,7 +40,7 @@ angular.module('myapp', [])
 .directive('looseCouple', ['$log', function ($log) {
   return {
     scope: {
-      list: '@'
+      list: '='
     },
     templateUrl: 'partials/loose-couple.html'
   }
@@ -53,7 +53,7 @@ angular.module('myapp', [])
 .directive('isolatedInput', ['$log', function ($log) {
   return {
     scope: {
-      someText: '='
+      someText: '@'
     },
     template: '<input type="text" ng-model="someText">'
   }
