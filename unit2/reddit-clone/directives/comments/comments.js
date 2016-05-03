@@ -13,7 +13,6 @@ angular.module('reddit-clone')
       scope.addComment = function () {
         scope.vm.showForm = false;
         var copy = angular.copy(scope.vm.newComment);
-        debugger;
         scope.vm.newComment = {};
         scope.postComments.push(copy);
       };

@@ -9,17 +9,7 @@
   </head>
   <body ng-app="myapp" ng-cloak>
     <div class="container" ng-controller="MainCtrl">
-      <!-- <h1>tight coupling</h1>
-      <tight-couple></tight-couple>
-      <hr>
-      <h1>loose coupling</h1>
-      <loose-couple list="vm.myList"></loose-couple> -->
-
-      <h3 ng-bind="vm.otherText"></h3>
-      <h5>tight coupling</h5>
-      <input-test></input-test>
-      <h5>loose coupling</h5>
-      <isolated-input some-text="vm.otherText"></isolated-input>
+      {{vm.obj1 === vm.obj2}}
     </div>
   </body>
 </html>

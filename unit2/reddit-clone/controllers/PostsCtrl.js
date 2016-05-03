@@ -10,6 +10,7 @@ function ($scope, $log, _validate, _posts) {
     query: "",
     showFavs: false
   };
+
   $scope.vm.posts = _posts.all();
 
   $scope.addPost = function (newPost) {

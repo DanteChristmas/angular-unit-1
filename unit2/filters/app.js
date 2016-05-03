@@ -28,20 +28,4 @@ angular.module('filters-sample', [])
       shouldShow: false
     }
   ]
-}])
-.filter('kebab', [function () {
-  return function (input) {
-    return input.replace(/_/g , "-");
-  };
-}])
-.filter('flagged', [function () {
-  return function (items, flagState) {
-    var filtered = [];
-    angular.forEach(items, function (item) {
-      if(item.shouldShow == flagState) {
-        filtered.push(item);
-      }
-    });
-    return filtered;
-  }
 }]);

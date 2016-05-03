@@ -58,7 +58,8 @@ function ($log, _validate, _local) {
         return _data;
       }
       $log.error('You must provide and id to delete!');
-    }
+    },
+    data: _data
   };
 
   return service;
