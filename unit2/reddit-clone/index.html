@@ -37,12 +37,12 @@
     <div ng-controller="PostsCtrl">
       <div class="container">
         <div class="row">
-          <posts-header filter="vm.filter" sort="vm.sort" ></posts-header>
+          <posts-header order-val="vm.orderVal" filter="vm.filter" sort="vm.sort" ></posts-header>
           <post-list posts="vm.posts" filter="vm.filter" sort="vm.sort"></post-list>
           <p ng-hide="vm.posts.length > 0">No Posts Added Yet</p>
         </div>
       </div>
-      <new-post-modal submit-handler="addPost"></new-post-modal>
+      <new-post-modal submit-handler="addPost(newPost)"></new-post-modal>
     </div>
   </body>
 </html>
